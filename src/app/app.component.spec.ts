@@ -1,12 +1,16 @@
 import { TestBed } from '@angular/core/testing';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SpinnerModule } from '@itsg/ui';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MatToolbarModule,
+        SpinnerModule
       ],
       declarations: [
         AppComponent
@@ -26,10 +30,11 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('jest-test');
   });
 
-  it('should render title', () => {
+  it('should render spinner', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('jest-test app is running!');
+    expect(compiled.querySelector('.mat-spinner')).toBeTruthy;
   });
+
 });
